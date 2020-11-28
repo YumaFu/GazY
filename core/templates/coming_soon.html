@@ -1,8 +1,8 @@
 {% extends 'main.html' %}
 
 {% block content %}
-{% load static %}
-<div class="main_header type1">
+{% load static %}=
+	<div class="main_header type1">
         <div class="tagline">
             <div class="container">
                 <div class="fright">
@@ -17,11 +17,22 @@
                                 </div>
                             </div>
                         </div>
-                        {% if request.user.is_authenticated %}
-                            <div class="log_in_out"><a href="/logout"><i class="icon-sign-in"></i> Выход</a></div>
-                        {% else %}
-                            <div class="log_in_out"><a href="/login"><i class="icon-sign-in"></i> Вход</a></div>
-                        {% endif %}
+                        <div class="log_in_out"><a href="javascript:void(0);" data-toggle="modal" data-target=".login_popup"><i class="icon-sign-in"></i> Вход</a></div>
+                        <div class="modal fade login_popup" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <h3>Вход</h3>
+                                    <form action="javascript:void(0);" method="post">
+                                        <input type="text" placeholder="Логин" value="" name="name">
+                                        <input type="password" placeholder="Пароль" value="" name="password">
+                                        <input type="submit" value="Log In"> 
+                                        <div class="remember_me"><label><input name="remember" type="checkbox" value="remember">Запомнить Меня</label></div>
+                                    </form>
+                                    <div class="forgot_password"><a href="javascript:void(0);">Забыли пароль?</a></div>
+                                    <button type="button" class="close_popup" data-dismiss="modal"><i class="icon-times"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="top_search" id="top_search">
                         <form action="#" method="get" name="search_form">
@@ -45,7 +56,7 @@
                 <div class="container">
                 	<a class="top_menu_toggler" href="javascript:void(0)"></a>
                 	<div class="logo_sect">
-                        <a href="/" class="logo"><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_def" alt="" /><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_retina" alt="" /></a>
+                        <a href="index.html" class="logo"><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_def" alt="" /><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_retina" alt="" /></a>                
                     </div> 
                     <nav>
                         <ul class="menu">
@@ -57,7 +68,7 @@
                                     <ul class="sub-menu">
                                         <li><a href="/about">About</a></li>
                                         <li><a href="/careers">Карьера</a></li>
-                                        <li><a href="/comingsoon">Скоро...</a></li>
+                                        <li><a href="/coming_soon">Скоро...</a></li>                                                                      
                                     </ul> 
                                 </div>
                             </li>
@@ -66,10 +77,6 @@
                             </li>
                             <li class="menu-item-has-children"><a href="/contact">Контакты</a>
                             </li>
-                            {% if request.user.is_authenticated %}
-                            <li class="menu-item-has-children"><a href="/userroom">Личный кабинет</a>
-                            </li>
-                            {% endif %}
                         </ul>                                  
                     </nav>                   
                     <div class="clear"></div>
@@ -91,7 +98,7 @@
             <div class="coming_soon_description">
                 <p>Наша команда в ближайшее время запустит удобный сервис!</p>
             </div>
-            <img src="{% static 'img/coming_soon.png' %}" alt="">
+            <img src="{% static 'img/6563d6ed36b40da13283025460dcddbf.png' %}" alt="">
             <div class="notify_shortcode">
                 <div class="row">
                 	<div class="col-sm-3">
@@ -112,42 +119,6 @@
             </div>
         </div>
     </div>
-    <div class="fixed-menu"></div>
-    <script>
-		function centerWindow() {
-			"use strict";
-			
-			var window_h = jQuery(window).height();
-			var header_h = jQuery('.main_header').height();
-			var globalWrap = jQuery('.global_count_wrapper');
-			var countWrapper_h = jQuery('.countdown_wrapper').innerHeight();
-			var countWrapper = jQuery('.countdown_wrapper');
-					
-			globalWrap.css('height', window_h - header_h + 'px');	
-			countWrapper.css({'margin-top': - countWrapper_h/2 + 'px'});	
-					
-		}	
-		jQuery(document).ready(function(){
-			"use strict";
-			centerWindow();
-		});
-		jQuery(window).load(function () {
-			"use strict";
-			centerWindow();
-		});
-		jQuery(window).resize(function(){
-			"use strict";
-			centerWindow();
-		});
-
-		jQuery(function () {
-			"use strict";
-			var austDay = new Date();				
-			var austDay = new Date(2020, 11-1, 29); //year, month-1, day
-			jQuery('#countdown').countdown({
-				until: austDay,
-				padZeroes: true
-			});
-		});
-	</script>   
-{% endblock %}
+    
+    <div class="fixed-menu"></div>    
+    {% endblock %}
