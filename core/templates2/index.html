@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="shortcut icon" href="img/icon-gpb-blue.ico" type="image/x-icon">
-<title>Digital assistant</title>
-<link href="http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,100,400italic,700,500,900" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/theme.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/revslider.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
-</head>
-<body>
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+
 	<div class="main_header type1">
         <div class="tagline">
             <div class="container">
@@ -23,8 +13,8 @@
                                 <span class="selected"></span>
                                 <span class="selectArrow"></span>
                                 <div class="selectOptions" >
-                                    <span class="selectOption" data-value="russia"><img src="img/imgs/Russia.jpg" alt="" />Русский</span>
-                                    <span class="selectOption" data-value="english"><img src="img/imgs/England.jpg" alt="" />English</span>
+                                    <span class="selectOption" data-value="russia"><img src="{% static 'img/Russia.jpg' %}" alt="" />Русский</span>
+                                    <span class="selectOption" data-value="english"><img src="{% static 'img/England.jpg' %}" alt="" />English</span>
                                 </div>
                             </div>
                         </div>
@@ -67,26 +57,26 @@
                 <div class="container">
                 	<a class="top_menu_toggler" href="javascript:void(0)"></a>
                 	<div class="logo_sect">
-                        <a href="index.html" class="logo"><img src="img/blue-logo-eng.png" class="logo_def" alt="" /><img src="img/blue-logo-eng.png" class="logo_retina" alt="" /></a>                
+                        <a href="index.html" class="logo"><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_def" alt="" /><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_retina" alt="" /></a>                
                     </div> 
                     <nav>
                         <ul class="menu">
-                            <li class="current-menu-parent menu-item-has-children"><a href="index.html">Домашняя</a>
+                            <li class="current-menu-parent menu-item-has-children"><a href="/">Домашняя</a>
                                 
                             </li>
                             <li class="menu-item-has-children"><a href="#">Страницы</a>
                                 <div class="sub-nav">
                                     <ul class="sub-menu">
-                                        <li><a href="about2.html">About</a></li>
-                                        <li><a href="careers.html">Карьера</a></li>
-                                        <li><a href="coming_soon.html">Скоро...</a></li>                                                                      
+                                        <li><a href="/about">About</a></li>
+                                        <li><a href="/careers">Карьера</a></li>
+                                        <li><a href="/coming_soon">Скоро...</a></li>                                                                      
                                     </ul> 
                                 </div>
                             </li>
-                            <li class="menu-item-has-children"><a href="portfolio_1col.html">Работа</a>  
+                            <li class="menu-item-has-children"><a href="/portfolio">Работа</a>  
                             </li>                      
                             </li>
-                            <li class="menu-item-has-children"><a href="contact_fullwidth.html">Контакты</a>
+                            <li class="menu-item-has-children"><a href="/contact">Контакты</a>
                             </li>
                         </ul>                                  
                     </nav>                   
@@ -111,7 +101,7 @@
                                                 <ul>
                                                   <!-- SLIDE 1 -->
                                                   <li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
-                                                  	  <img src="img/slider/transparent.png" alt="slide1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" />              
+                                                  	  <img src="{% static 'img/slider/transparent.png' %}" alt="slide1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" />              
                                                       <!-- LAYER NR. 1 -->
                                                       <div class="tp-caption lfb ltb tp-resizeme slide_img slide_left_img"
                                                            data-x="0"
@@ -120,7 +110,7 @@
                                                            data-start="700"
                                                            data-easing="Power4.easeOut"
                                                            data-endspeed="500"
-                                                           data-endeasing="Power4.easeIn"><img src="img/cosa-e-ai-ovvero-lintelligenza-artificiale.jpg" alt=""/>
+                                                           data-endeasing="Power4.easeIn"><img src="{% static 'img/cosa-e-ai-ovvero-lintelligenza-artificiale.jpg' %}" alt=""/>
                                                       </div>
                                                       
                                                       <!-- LAYER NR. 2 -->
@@ -164,7 +154,7 @@
                                                            data-start="1400"
                                                            data-easing="Power4.easeOut"
                                                            data-endspeed="600"
-                                                           data-endeasing="Power4.easeIn"><a href="careers.html">Online-Test</a>
+                                                           data-endeasing="Power4.easeIn"><a href="/careers">Online-Test</a>
                                                       </div>
                                                       
                                                       <!-- LAYER NR. 6 -->
@@ -175,13 +165,13 @@
                                                            data-start="1500"
                                                            data-easing="Power4.easeOut"
                                                            data-endspeed="600"
-                                                           data-endeasing="Power4.easeIn"><a href="coming_soon.html">Продолжить</a>
+                                                           data-endeasing="Power4.easeIn"><a href="/coming_soon">Продолжить</a>
                                                       </div>
                                                   </li>
                                                   
                                                   <!-- SLIDE 2 -->
                                                   <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
-                                                      <img src="img/slider/transparent.png" alt="slide2" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" />             
+                                                      <img src="{% static 'img/slider/transparent.png' %}" alt="slide2" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" />             
                                                       <!-- LAYER NR. 1 -->                
                                                       <div class="tp-caption lft ltt tp-resizeme slide_title slide_info_center"
                                                            data-x="0"
@@ -251,7 +241,7 @@
                                                   
                                                   <!-- SLIDE 3 -->
                                                   <li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
-                                                      <img src="img/slider/transparent.png" alt="slide3" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" />              
+                                                      <img src="{% static 'img/slider/transparent.png' %}" alt="slide3" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" />              
                                                       <!-- LAYER NR. 1 -->
                                                       <div class="tp-caption customin z_index2"
                                                       	   data-x="692"
@@ -260,7 +250,7 @@
                                                            data-speed="1500"
                                                            data-start="500"
                                                            data-easing="Power3.easeInOut"
-                                                           data-endspeed="300"><img src="img/slider/desktop.png" alt=""/>
+                                                           data-endspeed="300"><img src="{% static 'img/slider/desktop.png' %}" alt=""/>
                                                       </div>
                                                       
                                                       <!-- LAYER NR. 2 -->
@@ -271,7 +261,7 @@
                                                            data-start="1300"
                                                            data-easing="Back.easeInOut"
                                                            data-endspeed="1000"
-                                                           data-endeasing="Power4.easeIn"><img src="img/slider/mouse.png" alt=""/>
+                                                           data-endeasing="Power4.easeIn"><img src="{% static 'img/slider/mouse.png' %}" alt=""/>
                                                       </div>
                                                       
                                                       <!-- LAYER NR. 3 -->
@@ -326,7 +316,7 @@
                                                            data-start="1800"
                                                            data-easing="Power4.easeOut"
                                                            data-endspeed="600"
-                                                           data-endeasing="Power4.easeIn"><a href="careers.html">Online-Test</a>
+                                                           data-endeasing="Power4.easeIn"><a href="/careers">Online-Test</a>
                                                       </div>
                                                       
                                                       <!-- LAYER NR. 8 -->
@@ -337,7 +327,7 @@
                                                            data-start="2000"
                                                            data-easing="Power4.easeOut"
                                                            data-endspeed="600"
-                                                           data-endeasing="Power4.easeIn"><a href="coming_soon.html">Продолжить</a>
+                                                           data-endeasing="Power4.easeIn"><a href="/coming_soon">Продолжить</a>
                                                       </div>
                                                   </li>                                                                                                                                
                                                 </ul>
@@ -362,7 +352,7 @@
                                         <a href="javascript:void(0);">			
                                             <div class="iconbox_wrapper">
                                             	<div class="icon_title_wrap">
-                                                    <div class="ico"><img src="img/icons/icon8.png" class="icon_def" width="80" height="80" alt="" /><img src="img/retina/icons/icon8.png" class="icon_retina" width="80" height="80" alt="" /></div>
+                                                    <div class="ico"><img src="{% static 'img/icons/icon8.png' %}" class="icon_def" width="80" height="80" alt="" /><img src="{% static 'img/retina/icons/icon8.png' %}" class="icon_retina" width="80" height="80" alt="" /></div>
                                                     <h5 class="iconbox_title">Мы делаем подбор проще</h5>
                                                 </div>
                                                 <div class="iconbox_body">						
@@ -375,7 +365,7 @@
                                         <a href="javascript:void(0);">			
                                             <div class="iconbox_wrapper">
                                             	<div class="icon_title_wrap">
-                                                    <div class="ico"><img src="img/icons/icon9.png" class="icon_def" width="80" height="80" alt="" /><img src="img/retina/icons/icon9.png" class="icon_retina" width="80" height="56" alt="" /></div>
+                                                    <div class="ico"><img src="{% static 'img/icons/icon9.png' %}" class="icon_def" width="80" height="80" alt="" /><img src="{% static 'img/retina/icons/icon9.png' %}" class="icon_retina" width="80" height="56" alt="" /></div>
                                                     <h5 class="iconbox_title">Рекомендации
 подходящих кандидатов</h5>
                                                 </div>
@@ -389,7 +379,7 @@
                                         <a href="javascript:void(0);">			
                                             <div class="iconbox_wrapper">
                                             	<div class="icon_title_wrap">
-                                                    <div class="ico"><img src="img/icons/icon16.png" class="icon_def" width="80" height="80" alt="" /><img src="img/retina/icons/icon16.png" class="icon_retina" width="80" height="56" alt="" /></div>
+                                                    <div class="ico"><img src="{% static 'img/icons/icon16.png' %}" class="icon_def" width="80" height="80" alt="" /><img src="{% static 'img/retina/icons/icon16.png' %}" class="icon_retina" width="80" height="56" alt="" /></div>
                                                     <h5 class="iconbox_title">Быстрые отчеты по вакансиям</h5>
                                                 </div>
                                                 <div class="iconbox_body">						
@@ -400,7 +390,7 @@
                                     </div>
                                 </div> 
                                 <div class="col-sm-6 module_cont pb30 animate" data-anim-type="fadeIn" data-anim-delay="250">
-                                	<img src="img/imgs/home1.jpg" class="img-responsive" alt="" />
+                                	<img src="{% static 'img/imgs/home1.jpg' %}" class="img-responsive" alt="" />
                                 </div>        	
                              </div>  
                                                                                                             
@@ -415,7 +405,7 @@
                             
                             <div class="row">                             	
                                 <div class="col-sm-6 module_cont pb55 animate" data-anim-type="bounceInLeft" data-anim-delay="250">
-                                    <img src="img/imgs/home2.jpg" class="img-responsive mt_23" alt="">
+                                    <img src="{% static 'img/imgs/home2.jpg' %)" class="img-responsive mt_23" alt="">
                                 </div>
                                 <div class="col-sm-6 module_cont module_accordion pb45 animate" data-anim-type="bounceInRight" data-anim-delay="250">
                                     <div class="shortcode_accordion_shortcode accordion">
@@ -548,42 +538,42 @@
                                                 <li class="animate" data-anim-type="bounceIn" data-anim-delay="250">
                                                     <div class="item_wrapper">
                                                         <div class="item">
-                                                            <a href="http://hh.ru/" target="_blank"><img src="img/imgs/logo-hh-ru.png" alt="" /></a>
+                                                            <a href="http://hh.ru/" target="_blank"><img src="{% static 'img/imgs/logo-hh-ru.png' %}" alt="" /></a>
                                                         </div>
                                                     </div>
                                                 </li> 
                                                 <li class="animate" data-anim-type="bounceIn" data-anim-delay="300">
                                                     <div class="item_wrapper">
                                                         <div class="item">
-                                                            <a href="http://superjob.ru//" target="_blank"><img src="img/imgs/02F2EA91-9320-4B5C-9063-4AC2022AE258_w1200_r1.gif" alt="" /></a>
+                                                            <a href="http://superjob.ru//" target="_blank"><img src="{% static 'img/imgs/02F2EA91-9320-4B5C-9063-4AC2022AE258_w1200_r1.gif' %}" alt="" /></a>
                                                         </div>
                                                     </div>
                                                 </li> 
                                                 <li class="animate" data-anim-type="bounceIn" data-anim-delay="350">
                                                     <div class="item_wrapper">
                                                         <div class="item">
-                                                            <a href="http://worki.ru//" target="_blank"><img src="img/imgs/worki-logо.23.07_1.png" alt="" /></a>
+                                                            <a href="http://worki.ru//" target="_blank"><img src="{% static 'img/imgs/worki-logо.23.07_1.png' %}" alt="" /></a>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li class="animate" data-anim-type="bounceIn" data-anim-delay="400">
                                                     <div class="item_wrapper">
                                                         <div class="item">
-                                                            <a href="http://avito.ru/rossiya/rabota/" target="_blank"><img src="img/imgs/Logo-Avito.png" alt="" /></a>
+                                                            <a href="http://avito.ru/rossiya/rabota/" target="_blank"><img src="{% static 'img/imgs/Logo-Avito.png' %}" alt="" /></a>
                                                         </div>
                                                     </div>
                                                 </li> 
                                                 <li class="animate" data-anim-type="bounceIn" data-anim-delay="450">
                                                     <div class="item_wrapper">
                                                         <div class="item">
-                                                            <a href="http://rabota.ru//" target="_blank"><img src="img/imgs/rabota_ru.png" alt="" /></a>
+                                                            <a href="http://rabota.ru//" target="_blank"><img src="{% static 'img/imgs/rabota_ru.png' %}" alt="" /></a>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li class="animate" data-anim-type="bounceIn" data-anim-delay="500">
                                                     <div class="item_wrapper">
                                                         <div class="item">
-                                                            <a href="http://gorodrabot.ru//" target="_blank"><img src="img/imgs/maxresdefault.jpg" alt="" /></a>
+                                                            <a href="http://gorodrabot.ru//" target="_blank"><img src="{% static 'img/imgs/maxresdefault.jpg' %}" alt="" /></a>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -627,21 +617,21 @@
                             <ul class="recent_posts">                                    
                                 <li class="with_img">
                                     <div class="recent_posts_content">
-                                    	<img src="img/imgs/widget_post1.jpg" alt="" />
+                                    	<img src="{% static 'img/imgs/widget_post1.jpg' %}" alt="" />
                                         <a href="javascript:void(0);" class="title">Турнир по брейн-рингу</a>
                                         <div class="recent_posts_info">02.11.2020  /  <a href="javascript:void(0);">2 коментария</a></div>
                                     </div>                                    
                                 </li>                                
                                 <li class="with_img">
                                     <div class="recent_posts_content">
-                                    	<img src="img/imgs/widget_post2.jpg" alt="" />
+                                    	<img src="{% static 'img/imgs/widget_post2.jpg' %}" alt="" />
                                         <a href="javascript:void(0);" class="title">Осенний спорт-рейд</a>
                                         <div class="recent_posts_info"> 18.10.2020  /  <a href="javascript:void(0);">9 коментариев</a></div>
                                     </div>                                    
                                 </li>
                                 <li class="with_img">
                                     <div class="recent_posts_content">
-                                    	<img src="img/imgs/widget_post3.jpg" alt="" />
+                                    	<img src="{% static 'img/imgs/widget_post3.jpg' %}" alt="" />
                                         <a href="javascript:void(0);" class="title">"Географический диктант"</a>
                                         <div class="recent_posts_info">10.11.2020  /  <a href="javascript:void(0);">0 коментариев</a></div>
                                     </div>                                    
@@ -658,54 +648,14 @@
                                 <div class="last_review_author">
                                 	<h5>Талан Тимофей</h5>
                                     <h6>Капитан Yellow+</h6>
-                                    <img src="img/imgs/review_author.jpg" alt="" />
+                                    <img src="{% static 'img/imgs/review_author.jpg' %}" alt="" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-    
+        </div>   
+    </div>
     <div class="fixed-menu"></div>
-    
-    <script type="text/javascript" src="js/jquery.min.js"></script>	   
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/modules.js"></script>	
-	<script type="text/javascript" src="js/theme.js"></script> 
-    <script type="text/javascript" src="js/color_panel.js"></script>
-    <script type="text/javascript" src="js/jquery.themepunch.plugins.min.js"></script>
-    <script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>    
-    <script type="text/javascript">
-		jQuery(document).ready(function() {
-		   "use strict";			   						
-		   jQuery('.fullscreen_slider').show().revolution({
-				delay: 5000,
-				startwidth: 1170,
-				startheight: 765,
-				fullWidth:"off",
-				fullScreen:"on",
-				navigationType:"bullet",
-				fullScreenOffsetContainer: ".main_header",
-				fullScreenOffset: ""
-			});							
-		});
-	</script> 
-    
-    <!-- Portfolio -->
-    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="js/sorting.js"></script>
-    <script>	
-		items_set = [                    
-			{src : 'img/portfolio/370_300/10.jpg', zoom : 'img/portfolio/370_300/10.jpg', url : 'portfolio_post_fullwidth.html', columnclass: 'col-sm-4', sortcategory: 'webui', title: 'Unde Sed ut', itemcategory: 'Print Design'},
-			{src : 'img/portfolio/370_300/11.jpg', zoom : 'img/portfolio/370_300/11.jpg', url : 'portfolio_post_fullwidth.html', columnclass: 'col-sm-4', sortcategory: 'polygraphy', title: 'Tempore Nam Libero', itemcategory: 'Business'},
-			{src : 'img/portfolio/370_300/12.jpg', zoom : 'img/portfolio/370_300/12.jpg', url : 'portfolio_post_fullwidth.html', columnclass: 'col-sm-4', sortcategory: 'textstyle', title: 'Dolores Magni', itemcategory: 'People'}
-		];
-		jQuery('#list').portfolio_addon({
-			type : 2, // 2-4 columns portfolio
-			load_count : 3,
-			items : items_set
-		});
-	</script> 
-</body>
-</html>
+    {% endblock %}
