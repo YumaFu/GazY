@@ -1,0 +1,207 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+	<div class="main_header type1">
+        <div class="tagline">
+            <div class="container">
+                <div class="fright">
+                	<div class="tagline_items">
+                    	<div class="language_select">
+                            <div class="selectBox">
+                                <span class="selected"></span>
+                                <span class="selectArrow"></span>
+                                <div class="selectOptions" >
+                                    <span class="selectOption" data-value="russia"><img src="{% static 'img/Russia.jpg' %}" alt="" />Русский</span>
+                                    <span class="selectOption" data-value="english"><img src="{% static 'img/England.jpg' %}" alt="" />English</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% if request.user.is_authenticated %}
+                            <div class="log_in_out"><a href="/logout"><i class="icon-sign-in"></i> Выход</a></div>
+                        {% else %}
+                            <div class="log_in_out"><a href="/login"><i class="icon-sign-in"></i> Вход</a></div>
+                        {% endif %}
+                    </div>
+                    <div class="top_search" id="top_search">
+                        <form action="#" method="get" name="search_form">
+                            <input type="text" class="ct-search-input" value="" name="s" placeholder="Поиск...">
+                            <input type="submit" value="Search" class="s_submit">
+                            <span class="top-icon-search">
+                            	<i class="icon-search"></i>
+                            </span>                                
+                        </form>                            
+                    </div>                   
+                </div>
+                <div class="fleft">
+                    <div class="phone"><i class="icon-phone"></i> +7(911)-072-5606</div>
+                    <div class="email"><a href="mailto:#"><i class="icon-envelope"></i> yellowplus.busines.site</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="header_parent_wrap">
+            <header>
+                <div class="container">
+                	<a class="top_menu_toggler" href="javascript:void(0)"></a>
+                	<div class="logo_sect">
+                        <a href="/" class="logo"><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_def" alt="" /><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_retina" alt="" /></a>
+                    </div> 
+                    <nav>
+                        <ul class="menu">
+                            <li class="current-menu-parent menu-item-has-children"><a href="/">Домашняя</a>
+                                
+                            </li>
+                            <li class="menu-item-has-children"><a href="#">Страницы</a>
+                                <div class="sub-nav">
+                                    <ul class="sub-menu">
+                                        <li><a href="/about">About</a></li>
+                                        <li><a href="/careers">Карьера</a></li>
+                                        <li><a href="/comingsoon">Скоро...</a></li>
+                                    </ul> 
+                                </div>
+                            </li>
+                            <li class="menu-item-has-children"><a href="/portfolio">Работа</a>
+                            </li>                      
+
+                            <li class="menu-item-has-children"><a href="/contact">Контакты</a>
+                            </li>
+                            {% if request.user.is_authenticated %}
+                            <li class="menu-item-has-children"><a href="/userroom">Личный кабинет</a>
+                            </li>
+                            {% endif %}
+                        </ul>                                  
+                    </nav>                   
+                    <div class="clear"></div>
+                </div>
+            </header>
+        </div>
+    </div>
+    
+    <div class="wrapper">
+    	<div class="container">
+        	<div class="page_title_block">
+                <div class="bg_title">
+                    <h2>Обратная связь</h2>
+                </div>
+            </div>
+        	<div class="content_block row no-sidebar">
+            	<div class="fl-container">
+                	<div class="posts-block">
+                        <div class="contentarea">                        	
+                            <div class="row">
+                            	<div class="col-sm-9 module_cont pb20 animate" data-anim-type="fadeInLeft" data-anim-delay="300">
+                                	<h3 class="mb27 mt_5">Оставьте Своё сообщение</h3>
+                                	<div class="module_content contact_form">
+                                        <div id="note"></div>
+                                        <div id="fields"> 
+                                            <form id="ajax-contact-form" action="#">       
+                                            	<div class="row row20">
+                                                	<div class="col-sm-12"><input type="text" name="name" value="" placeholder="Ваше Имя *" /></div>
+                                                    <div class="col-sm-12"><input type="text" name="email" value="" placeholder="Email *" /></div>
+                                                    <div class="col-sm-12"><input type="text" name="subject" value="" placeholder="Ваш город" /></div>  	
+                                                </div>                    
+                                                <textarea name="message" id="message" placeholder="Введите Ваше сообщение..."></textarea> 
+                                                <input type="submit" value="Отправить сообщение"> 
+                                            </form> 
+                                        </div>
+                                    </div>                                
+                                </div>
+                            	<div class="col-sm-3 module_cont contact_info pb40 animate" data-anim-type="fadeInRight" data-anim-delay="300">
+                                	<h3 class="mb20 mt_5">Контакты</h3>
+                                    <p><span>Номер:</span> +7 (911) 072 56 06</p>
+                                    <p><span>Офис:</span> Новороссийск, проспект Ленина,33.</p>
+                                    <p class="mb29"><span>Сайт:</span> <a href="mailto:#">yellowplus.busines.site</a></p>
+                                    
+                                    <h3 class="mb26">Мы в социальных сетях</h3>
+                                    <div class="shortcode_icons_wrapper">
+                                        <a href="javascript:void(0);" title="Facebook"><span><i class="icon-facebook"></i></span></a>
+                                        <a href="javascript:void(0);" title="Twitter"><span><i class="icon-twitter"></i></span></a>
+                                        <a href="javascript:void(0);" title="Google+"><span><i class="icon-google-plus"></i></span></a>
+                                    </div>                                                                   
+                                </div>
+                            </div>
+                            
+                            <div class="fw_block bg_start wall_wrap full_map mb0">
+                                <div class="row">
+                                    <div class="col-sm-12 module_cont pb0 module_google_map">
+                                        <div class="module_content">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.768929500559!2d37.79025151553148!3d44.68349807909946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40f1f8469867b101%3A0x532470a7aac37679!2z0L_RgC4g0JvQtdC90LjQvdCwLCA5Mywg0J3QvtCy0L7RgNC-0YHRgdC40LnRgdC6LCDQmtGA0LDRgdC90L7QtNCw0YDRgdC60LjQuSDQutGA0LDQuSwgMzUzOTE4!5e0!3m2!1sru!2sru!4v1606513106133!5m2!1sru!2sru" width="800" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>                                        </div> 
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+    
+    <div class="footer">
+    	<div class="container">
+        	<div class="pre_footer">
+            	<div class="row">
+                	<div class="col-sm-3">
+                    	<div class="sidepanel widget_text">
+                        	<h4 class="title">Наши контакты</h4>
+                        	<p>Мы будем очень рады если Вы воспользуетесь Нашей обратной связью.</p>
+                            <p><span>Телефон:</span> +7 (911) 072 5606</p>
+                            <p><span>Офис:</span> Новороссийск, проспект Ленина,33.</p>
+                            <p><span>Сайт:</span> <a href="mailto:#">yellowplus.busines.site</a></p>
+                            <div class="footer_socials">
+                            	<ul>
+                                	<li><a href="javascript:void(0);" class="soc_fb"><i class="icon-facebook"></i></a></li>
+                                    <li><a href="javascript:void(0);" class="soc_tweet"><i class="icon-twitter"></i></a></li>
+                                    <li><a href="javascript:void(0);" class="soc_google"><i class="icon-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>	
+                    </div>
+                    <div class="col-sm-3">
+                    	<div class="sidepanel widget_posts">
+                        	<h4 class="title">Недавние посты</h4>
+                            <ul class="recent_posts">                                    
+                                <li class="with_img">
+                                    <div class="recent_posts_content">
+                                    	<img src="{% static 'img/widget_post1.jpg' %}" alt="" />
+                                        <a href="javascript:void(0);" class="title">Пост№1</a>
+                                        <div class="recent_posts_info">02.11.2020  /  <a href="javascript:void(0);">2 коментария</a></div>
+                                    </div>                                    
+                                </li>                                
+                                <li class="with_img">
+                                    <div class="recent_posts_content">
+                                    	<img src="{% static 'img/widget_post2.jpg' %}" alt="" />
+                                        <a href="javascript:void(0);" class="title">Пост№2</a>
+                                        <div class="recent_posts_info"> 18.10.2020  /  <a href="javascript:void(0);">9 коментариев</a></div>
+                                    </div>                                    
+                                </li>
+                                <li class="with_img">
+                                    <div class="recent_posts_content">
+                                    	<img src="{% static 'img/widget_post3.jpg' %}" alt="" />
+                                        <a href="javascript:void(0);" class="title">Пост№3</a>
+                                        <div class="recent_posts_info">10.11.2020  /  <a href="javascript:void(0);">0 коментариев</a></div>
+                                    </div>                                    
+                                </li>                            
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                    	<div class="sidepanel widget_review">
+                        	<h4 class="title">Отзыв</h4>
+                            <div class="last_review">
+                            	<p class="review_text">Лучшая в мире команда.</p>
+                                <div class="clear"></div>
+                                <div class="last_review_author">
+                                	<h5>Талан Тимофей</h5>
+                                    <h6>Капитан Yellow+</h6>
+                                    <img src="{% static 'img/review_author.jpg' %}" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-menu"></div>
+{% endblock %}
