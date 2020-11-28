@@ -17,7 +17,7 @@ input[type="email"],
 input[type="password"],
 input[type="submit"],
 textarea {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Proxima Nova Bold', sans-serif;
 	text-rendering: optimizeLegibility !important;
 }
 
@@ -173,11 +173,11 @@ blockquote.type1:before {
 }
 
 .iconbox_wrapper .ico {
-	background: #22a1c4;
+	background: #CEDFF4;
 }
 
 .iconbox_wrapper .ico:after {
-	border-color:#22a1c4;
+	border-color:#CEDFF4;
 }
 
 a:hover .iconbox_title {
@@ -209,7 +209,7 @@ h5.shortcode_toggles_item_title.state-active .ico:after,
 .quantity .minus:hover,
 .quantity .plus:hover,
 a.remove:hover {
-	background: #22a1c4;
+	background: #85A2EB;
 }
 
 .color_gradient_hor,
@@ -232,7 +232,7 @@ h5.shortcode_accordion_item_title:hover,
 h5.shortcode_toggles_item_title:hover,
 h5.shortcode_accordion_item_title.state-active,
 h5.shortcode_toggles_item_title.state-active {
-   color:#22a1c4;
+   color:#5960EA;
 }
 
 .module_team .item_list.type2 .teamlink:hover {
@@ -334,7 +334,7 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 .coupon input[type="submit"]:hover {
-	background-color:#22a1c4;
+	background-color:#E7EAF2;
 }
 
 .with_reset .fright:hover:before {

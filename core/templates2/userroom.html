@@ -1,0 +1,301 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+	<div class="main_header type1">
+        <div class="tagline">
+            <div class="container">
+                <div class="fright">
+                	<div class="tagline_items">
+                    	<div class="language_select">
+                            <div class="selectBox">
+                                <span class="selected"></span>
+                                <span class="selectArrow"></span>
+                                <div class="selectOptions" >
+                                    <span class="selectOption" data-value="russia"><img src="{% static 'img/Russia.jpg' %}" alt="" />Русский</span>
+                                    <span class="selectOption" data-value="english"><img src="{% static 'img/England.jpg' %}" alt="" />English</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% if request.user.is_authenticated %}
+                            <div class="log_in_out"><a href="/logout"><i class="icon-sign-in"></i> Выход</a></div>
+                        {% else %}
+                            <div class="log_in_out"><a href="/login"><i class="icon-sign-in"></i> Вход</a></div>
+                        {% endif %}
+                    </div>
+                    <div class="top_search" id="top_search">
+                        <form action="#" method="get" name="search_form">
+                            <input type="text" class="ct-search-input" value="" name="s" placeholder="Поиск...">
+                            <input type="submit" value="Search" class="s_submit">
+                            <span class="top-icon-search">
+                            	<i class="icon-search"></i>
+                            </span>                                
+                        </form>                            
+                    </div>                   
+                </div>
+                <div class="fleft">
+                    <div class="phone"><i class="icon-phone"></i> +7(911)-072-5606</div>
+                    <div class="email"><a href="mailto:#"><i class="icon-envelope"></i> yellowplus.busines.site</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="header_parent_wrap">
+            <header>
+                <div class="container">
+                	<a class="top_menu_toggler" href="javascript:void(0)"></a>
+                	<div class="logo_sect">
+                        <a href="/" class="logo"><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_def" alt="" /><img src="{% static 'img/blue-logo-eng.png' %}" class="logo_retina" alt="" /></a>
+                    </div> 
+                    <nav>
+                        <ul class="menu">
+                            <li class="current-menu-parent menu-item-has-children"><a href="/">Домашняя</a>
+                                
+                            </li>
+                            <li class="menu-item-has-children"><a href="#">Страницы</a>
+                                <div class="sub-nav">
+                                    <ul class="sub-menu">
+                                        <li><a href="/about">About</a></li>
+                                        <li><a href="/careers">Карьера</a></li>
+                                        <li><a href="/comingsoon">Скоро...</a></li>
+                                    </ul> 
+                                </div>
+                            </li>
+                            <li class="menu-item-has-children"><a href="/portfolio">Работа</a>
+                            </li>
+                            <li class="menu-item-has-children"><a href="/contact">Контакты</a>
+                            </li>
+                            {% if request.user.is_authenticated %}
+                            <li class="menu-item-has-children"><a href="/userroom">Личный кабинет</a>
+                            </li>
+                            {% endif %}
+                        </ul>                                  
+                    </nav>                   
+                    <div class="clear"></div>
+                </div>
+            </header>
+        </div>
+    </div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Добавить новое резюме
+</button>
+{% if update %}
+<form id="update_data" method="post">
+            {% csrf_token %}
+            {{form}}
+</form>
+<button form="update_data" type="submit" class="btn btn-primary">Обновить</button>
+{% else %}
+{% for i in list_articles %}
+      {% if request.user == i.author %}
+<div class="resume">
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading resume-heading">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="col-xs-12 col-sm-4">
+              <figure>
+                <img class="img-circle img-responsive" alt="" src="http://placehold.it/180x180">
+              </figure>
+
+              <div class="row">
+                <div class="col-xs-12 social-btns">
+
+                    <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                      <a href="#" class="btn btn-social btn-block btn-google">
+                        <i class="fa fa-google"></i> </a>
+                    </div>
+
+                    <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                      <a href="#" class="btn btn-social btn-block btn-facebook">
+                        <i class="fa fa-facebook"></i> </a>
+                    </div>
+
+                    <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                      <a href="#" class="btn btn-social btn-block btn-twitter">
+                        <i class="fa fa-twitter"></i> </a>
+                    </div>
+
+                    <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                      <a href="#" class="btn btn-social btn-block btn-linkedin">
+                        <i class="fa fa-linkedin"></i> </a>
+                    </div>
+
+                    <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                      <a href="#" class="btn btn-social btn-block btn-github">
+                        <i class="fa fa-github"></i> </a>
+                    </div>
+
+                    <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                      <a href="#" class="btn btn-social btn-block btn-stackoverflow">
+                        <i class="fa fa-stack-overflow"></i> </a>
+                    </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-2">
+              <ul class="list-group">
+                <li class="list-group-item">Last name</li>
+                <li class="list-group-item">First name</li>
+                <li class="list-group-item"><i class="fa fa-phone"></i> Telephone number </li>
+                <li class="list-group-item"><i class="fa fa-envelope"></i> Email address</li>
+              </ul>
+            </div><div class="col-xs-12 col-sm-6">
+              <ul class="list-group">
+                <li class="list-group-item">{{i.last_name }}</li>
+                <li class="list-group-item">{{i.first_name }}</li>
+                <li class="list-group-item"><i class="fa fa-phone"></i> {{i.phone }} </li>
+                <li class="list-group-item"><i class="fa fa-envelope"></i> {{i.mail }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bs-callout bs-callout-danger pl-sm-3">
+        <h2>Резюме</h2>
+        <h4>
+         {{i.text }}
+        </h4>
+      </div>
+      <div class="bs-callout bs-callout-danger">
+        <h2>Область научных интересов</h2>
+        <h4>
+          {{i.textinteres }}
+        </h4>
+      </div>
+
+      <div class="bs-callout bs-callout-danger">
+        <h2>Предыдущий опыт</h2>
+            <h4>
+              {{i.textwork }}
+            </h4>
+      </div>
+
+      <div class="bs-callout bs-callout-danger">
+        <h2>Ключевые компетенции</h2>
+        <ul class="list-group">
+            <h4>{{i.textkeys }} </h4>
+        </ul>
+      </div>
+        <h1><a href="{% url 'update_userroom' i.id %}">редактировать</a></h1>
+        <h1><form id="delete_form{{i.id}}" action="{% url 'delete_userroom' i.id %}" method="post">{% csrf_token %}</form>
+          <a href="javascript:void()" onclick="delete_question{{i.id}}()">удалить</a>
+          <script>
+              function delete_question{{i.id}}() {
+                  if (confirm("Вы уверены")) {
+                      document.getElementById('delete_form{{i.id}}').submit()
+                  }
+
+              }
+
+              </script></h1>
+    </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    <div class="footer">
+    	<div class="container">
+        	<div class="pre_footer">
+            	<div class="row">
+                	<div class="col-sm-3">
+                    	<div class="sidepanel widget_text">
+                        	<h4 class="title">Наши контакты</h4>
+                        	<p>Мы будем очень рады если Вы воспользуетесь Нашей обратной связью.</p>
+                            <p><span>Телефон:</span> +7 (911) 072 5606</p>
+                            <p><span>Офис:</span> Новороссийск, проспект Ленина,33.</p>
+                            <p><span>Сайт:</span> <a href="mailto:#">yellowplus.busines.site</a></p>
+                            <div class="footer_socials">
+                            	<ul>
+                                	<li><a href="javascript:void(0);" class="soc_fb"><i class="icon-facebook"></i></a></li>
+                                    <li><a href="javascript:void(0);" class="soc_tweet"><i class="icon-twitter"></i></a></li>
+                                    <li><a href="javascript:void(0);" class="soc_google"><i class="icon-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>	
+                    </div>
+                    <div class="col-sm-3">
+                    	<div class="sidepanel widget_posts">
+                        	<h4 class="title">Недавние посты</h4>
+                            <ul class="recent_posts">                                    
+                                <li class="with_img">
+                                    <div class="recent_posts_content">
+                                    	<img src="{% static 'img/widget_post1.jpg' %}" alt="" />
+                                        <a href="javascript:void(0);" class="title">Пост№1</a>
+                                        <div class="recent_posts_info">02.11.2020  /  <a href="javascript:void(0);">2 коментария</a></div>
+                                    </div>                                    
+                                </li>                                
+                                <li class="with_img">
+                                    <div class="recent_posts_content">
+                                    	<img src="{% static 'img/widget_post2.jpg' %}" alt="" />
+                                        <a href="javascript:void(0);" class="title">Пост№2</a>
+                                        <div class="recent_posts_info"> 18.10.2020  /  <a href="javascript:void(0);">9 коментариев</a></div>
+                                    </div>                                    
+                                </li>
+                                <li class="with_img">
+                                    <div class="recent_posts_content">
+                                    	<img src="{% static 'img/widget_post3.jpg' %}" alt="" />
+                                        <a href="javascript:void(0);" class="title">Пост№3</a>
+                                        <div class="recent_posts_info">10.11.2020  /  <a href="javascript:void(0);">0 коментариев</a></div>
+                                    </div>                                    
+                                </li>                            
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                    	<div class="sidepanel widget_review">
+                        	<h4 class="title">Отзыв</h4>
+                            <div class="last_review">
+                            	<p class="review_text">Лучшая в мире команда.</p>
+                                <div class="clear"></div>
+                                <div class="last_review_author">
+                                	<h5>Талан Тимофей</h5>
+                                    <h6>Капитан Yellow+</h6>
+                                    <img src="{% static 'img/review_author.jpg' %}" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="add_form" method="post">
+            {% csrf_token %}
+            {{form}}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">закрыть</button>
+        <button form="add_form" type="submit" class="btn btn-primary">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="fixed-menu"></div>
+    <script>	
+		items_set = [                    
+			{src : 'img/portfolio/570_379/5.jpg', zoom : 'img/portfolio/570_379/5.jpg', url : 'careers.html', sortcategory: 'branding textstyle', title: 'Praesent mi magna', itemdate: 'Dec 03, 2020', itemcategory: 'Category: <a href="javascript:void(0);">typography</a>', itemauthor: 'Client: <a href="javascript:void(0);">gt3dev</a>', itemtime: 'Time spent: <a href="javascript:void(0);">2 days</a>', itemdescr: 'Sed ullamcorper dignissim consectetur ut tincidunt eros sed sapien consectetur dictum. Ultrices posuere cubilia curae curabitur sit amet tortor ut massa commodo. Vestibulum consectetur euismod malesuada tincidunt cum. Pellentesques sed volutpat ante, cursus port. Praesent mi magna, penatibus et magniseget dis parturient montes, nascetur ridiculus mus, commodo id eros dapibus, vestibulum luctus, tortor. Morbi eget turpis justo vestibulum est elit, congue nec metus rutrum nullam, ut consectetur ipsum aliquam semper fringilla fermentum. Ut ullamcorper nibh a mauris luctus, sit amet pulvinar ligula venenatis nunc ac suscipit, sapien nec gravida vehicula, mauris lectus a nec. Lobortis nibh, at mattis turpis lectus nec ligula. Maecenas varius dignissim ultrices. Sed dignissim, ac bibendum varius. Vestibulum ante ipsum primis in faucibus orci luctus nunc ac suscipit, sapien nec gravida vehicula, mauris lectus a nec. Lobortis nibh, at mattis turpis lectus nec ligula.'},
+			{src : 'img/portfolio/570_379/6.jpg', zoom : 'img/portfolio/570_379/6.jpg', url : 'careers.html', sortcategory: 'polygraphy webui', title: 'Ut enim ad minima', itemdate: 'Dec 02, 2020', itemcategory: 'Category: <a href="javascript:void(0);">typography</a>', itemauthor: 'Client: <a href="javascript:void(0);">gt3dev</a>', itemtime: 'Time spent: <a href="javascript:void(0);">2 days</a>', itemdescr: 'Praesent mi magna, penatibus et magniseget dis parturient montes, nascetur ridiculus mus, commodo id eros dapibus, vestibulum luctus, tortor. Ultrices posuere cubilia curae curabitur sit amet tortor ut massa commodo. Vestibulum consectetur euismod malesuada tincidunt cum. Sed ullamcorper dignissim consectetur ut tincidunt eros sed sapien consectetur dictum. Pellentesques sed volutpat ante, cursus port. Morbi eget turpis justo vestibulum est elit, congue nec metus rutrum nullam, ut consectetur ipsum aliquam semper fringilla fermentum. Ut ullamcorper nibh a mauris luctus, sit amet pulvinar ligula venenatis nunc ac suscipit, sapien nec gravida vehicula, mauris lectus a nec. Lobortis nibh, at mattis turpis lectus nec ligula. Maecenas varius dignissim ultrices. Sed dignissim, ac bibendum varius. Vestibulum ante ipsum primis in faucibus orci luctus nunc ac suscipit, sapien nec gravida vehicula, mauris lectus a nec. Lobortis nibh, at mattis turpis lectus nec ligula.'}
+		];
+		jQuery('#list').portfolio_addon({
+			type : 1, // 1 column portfolio
+			load_count : 2,
+			items : items_set
+		});
+	</script>
+{% endblock %}

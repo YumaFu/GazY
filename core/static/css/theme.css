@@ -991,7 +991,7 @@ h3, h3 span, h3 a,
 h4, h4 span, h4 a,
 h5, h5 span, h5 a,
 h6, h6 span, h6 a {
-	color:#2d2e2e;
+	color:#262C40;
 	font-weight:300;
 }
 
@@ -1022,7 +1022,7 @@ h1 {
 }
 
 h2, h2 span, h2 a {
-	font-size:24px;
+	font-size:28px;
 	line-height:28px;
 	font-weight:700;
 	-moz-osx-font-smoothing:grayscale;
@@ -1331,7 +1331,7 @@ blockquote:before {
 
 /* F O O T E R */
 .footer {
-    background:#31383d;
+    background:#262C40;
 }
 
 .pre_footer {
@@ -2857,7 +2857,7 @@ a:hover .iconbox_wrapper .ico:after  {
 }
 
 .iconbox_title {
-    font-size: 20px;
+    font-size: 22px;
     line-height: 25px;
     margin-bottom: 0;
 	position:relative;
@@ -5180,7 +5180,7 @@ textarea {
     color: #9e9e9e;
 	font-weight:300;
     padding: 6px 15px 7px 15px;
-    border: 1px #9e9e9e solid;
+    border: 1px #D6DFE7 solid;
     border-radius:5px;
 	-webkit-border-radius:5px;
     margin: 0 0 20px 0;
@@ -5202,7 +5202,7 @@ input[type="submit"] {
     border: none;
     font-size: 14px;
     height: 35px;
-    color: #ffffff;
+    color: #7C8793;
 	line-height:33px;
     padding: 0 20px;
     border-radius:5px;
@@ -6533,8 +6533,8 @@ h2.portf_title a {
 .slide_title {
 	z-index: 4;
 	line-height:140px;
-	font-size:100px;
-	color:#fff;
+	font-size:180px;
+	color:rgba(241, 0, 0, 0.5);
 	font-weight:normal;
 	font-family: 'Nothing You Could Do', cursive;
 }
@@ -6546,7 +6546,7 @@ h2.portf_title a {
 .slide_descr {
 	z-index: 5;
 	line-height:45px;
-	font-size:30px;
+	font-size:20px;
 	color:#fff;
 	font-weight:400;
 }
@@ -6616,10 +6616,10 @@ h2.portf_title a {
 	font-size:16px;
 	line-height:24px;
 	color:#fff;
-	background:#2da6c7;
+	background:#508BE2;
 }
 .block_plus .item.bg_color2 {
-	background:#22a1c4;
+	background:#0057B6;
 }
 .block_plus .item .item_title {
 	font-size:30px;
