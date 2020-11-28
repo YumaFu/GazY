@@ -225,6 +225,16 @@ def index(request):
     return render(request, templates, context)
 
 
+def GoDev(request):
+    context = {
+
+    }
+
+    templates = 'godev.html'
+
+    return render(request, templates, context)
+
+
 def about(request):
     context = {
 

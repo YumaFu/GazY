@@ -17,22 +17,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="log_in_out"><a href="javascript:void(0);" data-toggle="modal" data-target=".login_popup"><i class="icon-sign-in"></i> Вход</a></div>
-                        <div class="modal fade login_popup" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <h3>Вход</h3>
-                                    <form action="javascript:void(0);" method="post">
-                                        <input type="text" placeholder="Логин" value="" name="name">
-                                        <input type="password" placeholder="Пароль" value="" name="password">
-                                        <input type="submit" value="Log In"> 
-                                        <div class="remember_me"><label><input name="remember" type="checkbox" value="remember">Запомнить Меня</label></div>
-                                    </form>
-                                    <div class="forgot_password"><a href="javascript:void(0);">Забыли пароль?</a></div>
-                                    <button type="button" class="close_popup" data-dismiss="modal"><i class="icon-times"></i></button>
-                                </div>
-                            </div>
-                        </div>
+                        {% if request.user.is_authenticated %}
+                            <div class="log_in_out"><a href="/logout"><i class="icon-sign-in"></i> Выход</a></div>
+                        {% else %}
+                            <div class="log_in_out"><a href="/login"><i class="icon-sign-in"></i> Вход</a></div>
+                        {% endif %}
                     </div>
                     <div class="top_search" id="top_search">
                         <form action="#" method="get" name="search_form">
@@ -73,10 +62,13 @@
                                 </div>
                             </li>
                             <li class="menu-item-has-children"><a href="/portfolio">Работа</a>
-                            </li>                      
                             </li>
                             <li class="menu-item-has-children"><a href="/contact">Контакты</a>
                             </li>
+                             {% if request.user.is_authenticated %}
+                            <li class="menu-item-has-children"><a href="/userroom">Личный кабинет</a>
+                            </li>
+                            {% endif %}
                         </ul>                                  
                     </nav>                   
                     <div class="clear"></div>
@@ -84,7 +76,7 @@
             </header>
         </div>
     </div>
-    
+
 	<div class="global_count_wrapper">
         					
         <div class="countdown_wrapper">

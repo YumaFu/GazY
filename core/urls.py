@@ -24,6 +24,7 @@ urlpatterns = [
     path('update-page/<int:pk>', views.ArticleUpdateView.as_view(), name='update_page'),
     path('delete-page/<int:pk>', views.ArticleDeleteView.as_view(), name='delete_page'),
     path('login', views.MyprojectLoginView.as_view(), name='login_page'),
+    path('godev', views.GoDev, name='godev'),
     path('register', views.RegisterUserView.as_view(), name='register_page'),
     path('logout', views.MyProjectLogout.as_view(), name='logout_page'),
     # path('firstuserroom/<int:pk>', views.Articaless, name='articaless'),
