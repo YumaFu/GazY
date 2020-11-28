@@ -67,6 +67,7 @@
   <tbody>
       
       {% for i in list_articles %}
+      {% if request.user == i.author %}
     <tr {% if i.id|slugify == request.GET.id %} style="background:red" {% endif %}>
       <th>{{i.id}}</th>
       <td>{{i.create_date|date:'d.m.Y'}} - {{i.author}}</td>
@@ -115,6 +116,7 @@
           
           </td>
     </tr>
+      {% endif %}
     {% endfor %}
 
   </tbody>

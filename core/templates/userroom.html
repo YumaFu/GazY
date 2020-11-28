@@ -76,6 +76,18 @@
             </header>
         </div>
     </div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Добавить новое резюме
+</button>
+{% if update %}
+<form id="update_data" method="post">
+            {% csrf_token %}
+            {{form}}
+</form>
+<button form="update_data" type="submit" class="btn btn-primary">Обновить</button>
+{% else %}
+{% for i in list_articles %}
+      {% if request.user == i.author %}
 <div class="resume">
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
@@ -125,56 +137,6 @@
               </div>
 
             </div>
- {% for i in list_articles %}
-    <tr {% if i.id|slugify == request.GET.id %} style="background:red" {% endif %}>
-      <th>{{i.id}}</th>
-      <td>{{i.create_date|date:'d.m.Y'}} - {{i.author}}</td>
-      <td>{{i.last_name }}</td>
-        <td>{{i.first_name}}</td>
-        <td>{{i.phone}}</td>
-        <td>{{i.mail}}</td>
-        <td>{{i.text}}</td>
-        <td>{{i.textinteres}}</td>
-        <td>{{i.textwork}}</td>
-        <td>{{i.textkeys}}</td>
-      <td>
-
-          {% if request.user == i.author %}
-          <a href="{% url 'update_page' i.id %}">редактировать</a>
-          {% else %}
-
-          нет доступа
-          {% endif %}
-
-          </td>
-      <td>
-
-
-
-          {% if request.user == i.author %}
-          <form id="delete_form{{i.id}}" action="{% url 'delete_page' i.id %}" method="post">{% csrf_token %}</form>
-          <a href="javascript:void()" onclick="delete_question{{i.id}}()">удалить</a>
-          <script>
-              function delete_question{{i.id}}() {
-                  if (confirm("Вы уверены")) {
-                      document.getElementById('delete_form{{i.id}}').submit()
-                  }
-
-              }
-
-              </script>
-
-          {% else %}
-
-          нет доступа
-
-
-            {% endif %}
-
-
-          </td>
-    </tr>
-    {% endfor %}
             <div class="col-xs-12 col-sm-2">
               <ul class="list-group">
                 <li class="list-group-item">Last name</li>
@@ -184,10 +146,10 @@
               </ul>
             </div><div class="col-xs-12 col-sm-6">
               <ul class="list-group">
-                <li class="list-group-item">John Doe</li>
-                <li class="list-group-item">Software Engineer</li>
-                <li class="list-group-item"><i class="fa fa-phone"></i> 000-000-0000 </li>
-                <li class="list-group-item"><i class="fa fa-envelope"></i> john@example.com</li>
+                <li class="list-group-item">{{i.last_name }}</li>
+                <li class="list-group-item">{{i.first_name }}</li>
+                <li class="list-group-item"><i class="fa fa-phone"></i> {{i.phone }} </li>
+                <li class="list-group-item"><i class="fa fa-envelope"></i> {{i.mail }}</li>
               </ul>
             </div>
           </div>
@@ -195,71 +157,35 @@
       </div>
       <div class="bs-callout bs-callout-danger pl-sm-3">
         <h2>Резюме</h2>
-        <p>
-         Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu,
-         te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-        </p>
-        <p>
-            Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis.
-            Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
-
-        </p>
+        <h4>
+         {{i.text }}
+        </h4>
       </div>
       <div class="bs-callout bs-callout-danger">
         <h2>Область научных интересов</h2>
-        <p>
-          Software Engineering, Machine Learning, Image Processing,
-          Computer Vision, Artificial Neural Networks, Data Science,
-          Evolutionary Algorithms.
-        </p>
+        <h4>
+          {{i.textinteres }}
+        </h4>
       </div>
 
       <div class="bs-callout bs-callout-danger">
         <h2>Предыдущий опыт</h2>
-        <ul class="list-group">
-          <a class="list-group-item inactive-link" href="#">
-            <h3 class="list-group-item-heading">
-              Software Engineer at Twitter
-            </h3>
-            <p class="list-group-item-text">
-              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu,
-         te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-            </p>
-          </a>
-          <a class="list-group-item inactive-link" href="#">
-            <h3 class="list-group-item-heading">Software Engineer at LinkedIn</h3>
-            <p class="list-group-item-text">
-              Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur.
-              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola,
-              nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                </p><ul>
-                  <li>
-                 Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur.
-              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola,
-              nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                  </li>
-                  <li>
-                 Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur.
-              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola,
-              nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                  </li>
-                </ul>
-            <p></p>
-          </a>
-        </ul>
+            <h4>
+              {{i.textwork }}
+            </h4>
       </div>
+
       <div class="bs-callout bs-callout-danger">
         <h2>Ключевые компетенции</h2>
         <ul class="list-group">
-          <li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc </li>
-          <li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
-          <li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
-          <li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
-          <li class="list-group-item">Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
-          <li class="list-group-item"> Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
+            <h4>{{i.textkeys }} </h4>
         </ul>
       </div>
+        <h1><a href="{% url 'update_userroom' i.id %}">редактировать</a></h1>
     </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
     <div class="footer">
     	<div class="container">
         	<div class="pre_footer">
@@ -327,6 +253,28 @@
         </div>
     </div>
 
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="add_form" method="post">
+            {% csrf_token %}
+            {{form}}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">закрыть</button>
+        <button form="add_form" type="submit" class="btn btn-primary">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>
     <div class="fixed-menu"></div>
     <script>	
 		items_set = [                    

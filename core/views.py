@@ -110,7 +110,23 @@ class ArticleCreateView(LoginRequiredMixin, CustomSuccessMessageMixin, CreateVie
         self.object.author = self.request.user
         self.object.save()
         return super().form_valid(form)
-    
+
+
+class ArticlesCreateView(LoginRequiredMixin, CustomSuccessMessageMixin, CreateView):
+    login_url = reverse_lazy('login_page')
+    model = Articles
+    template_name = 'userroom.html'
+    form_class = ArticleForm
+    success_url = reverse_lazy('userroom')
+    success_msg = 'Запись создана'
+    def get_context_data(self,**kwargs):
+        kwargs['list_articles'] = Articles.objects.all().order_by('-id')
+        return super().get_context_data(**kwargs)
+    def form_valid(self,form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.save()
+        return super().form_valid(form)
     
 
 class ArticleUpdateView(LoginRequiredMixin, CustomSuccessMessageMixin,UpdateView):
@@ -128,7 +144,20 @@ class ArticleUpdateView(LoginRequiredMixin, CustomSuccessMessageMixin,UpdateView
             return self.handle_no_permission()
         return kwargs
 
-
+class ArticlesUpdateView(LoginRequiredMixin, CustomSuccessMessageMixin,UpdateView):
+    model = Articles
+    template_name = 'userroom.html'
+    form_class = ArticleForm
+    success_url = reverse_lazy('userroom')
+    success_msg = 'Запись успешно обновлена'
+    def get_context_data(self,**kwargs):
+        kwargs['update'] = True
+        return super().get_context_data(**kwargs)
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.user != kwargs['instance'].author:
+            return self.handle_no_permission()
+        return kwargs
 
 class MyprojectLoginView(LoginView):
     template_name = 'login.html'

@@ -33,7 +33,9 @@ urlpatterns = [
     path('comingsoon', views.comingsoon, name='comingsoon'),
     path('contact', views.contact, name='contact'),
     path('portfolio', views.portfolio, name='portfolio'),
-    path('userroom', views.userroom, name='userroom'),
+    # path('userroom', views.userroom, name='userroom'),
+    path('userroom', views.ArticlesCreateView.as_view(), name='userroom'),
+    path('update_userroom/<int:pk>', views.ArticlesUpdateView.as_view(), name='update_userroom'),
     #ajax
     path('update_comment_status/<int:pk>/<slug:type>', views.update_comment_status, name='update_comment_status')
 
