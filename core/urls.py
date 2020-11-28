@@ -26,6 +26,7 @@ urlpatterns = [
     path('login', views.MyprojectLoginView.as_view(), name='login_page'),
     path('register', views.RegisterUserView.as_view(), name='register_page'),
     path('logout', views.MyProjectLogout.as_view(), name='logout_page'),
+    # path('firstuserroom/<int:pk>', views.Articaless, name='articaless'),
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
     path('careers', views.careers, name='careers'),

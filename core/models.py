@@ -29,5 +29,5 @@ class Comments(models.Model):
     create_date = models.DateTimeField(auto_now=True)
     text = models.TextField(verbose_name='Текст комментария')
     status = models.BooleanField(verbose_name='Видимость статьи', default=False)
-    objects  = StatusFilterComments()
+    objects = StatusFilterComments()
 

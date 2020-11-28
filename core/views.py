@@ -10,7 +10,8 @@ from django.contrib.auth.views import LoginView,LogoutView
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, request
+from django.db import models
 
 from django.template import Context, Template
 
@@ -230,19 +231,12 @@ def portfolio(request):
 
 
 def userroom(request):
-    if request.user.is_authenticated:
-        context = {
+    templates = 'userroom.html'
+    context = {
 
-        }
+    }
+    return render(request, templates, context)
 
-        templates = 'userroom.html'
-
-        return render(request, templates, context)
-    else:
-        context = {
-
-        }
-        return redirect('index')
 
 
 
