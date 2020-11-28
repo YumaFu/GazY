@@ -5,7 +5,7 @@ from django.db.models import Q
 
 # Create your models here.
 class Articles(models.Model):
-    author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name='Владелец статьи', blank = True, null = True )
+    author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name='Владелец резюме', blank = True, null = True )
     create_date = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=200, verbose_name='Название')
     text = models.TextField(verbose_name='Текст')
@@ -14,8 +14,8 @@ class Articles(models.Model):
         return self.name
     
     class Meta:
-        verbose_name='Статью'
-        verbose_name_plural='Статьи'
+        verbose_name='Резюме'
+        verbose_name_plural='Резюме'
 
 class StatusFilterComments(models.Manager):
     def get_queryset(self):
