@@ -36,6 +36,7 @@ urlpatterns = [
     # path('userroom', views.userroom, name='userroom'),
     path('userroom', views.ArticlesCreateView.as_view(), name='userroom'),
     path('update_userroom/<int:pk>', views.ArticlesUpdateView.as_view(), name='update_userroom'),
+    path('delete-userroom/<int:pk>', views.ArticlesDeleteView.as_view(), name='delete_userroom'),
     #ajax
     path('update_comment_status/<int:pk>/<slug:type>', views.update_comment_status, name='update_comment_status')
 

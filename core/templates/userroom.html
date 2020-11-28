@@ -182,6 +182,17 @@
         </ul>
       </div>
         <h1><a href="{% url 'update_userroom' i.id %}">редактировать</a></h1>
+        <h1><form id="delete_form{{i.id}}" action="{% url 'delete_userroom' i.id %}" method="post">{% csrf_token %}</form>
+          <a href="javascript:void()" onclick="delete_question{{i.id}}()">удалить</a>
+          <script>
+              function delete_question{{i.id}}() {
+                  if (confirm("Вы уверены")) {
+                      document.getElementById('delete_form{{i.id}}').submit()
+                  }
+
+              }
+
+              </script></h1>
     </div>
       {% endif %}
       {% endfor %}

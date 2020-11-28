@@ -199,6 +199,22 @@ class ArticleDeleteView(LoginRequiredMixin, DeleteView):
         self.object.delete()
         return HttpResponseRedirect(success_url)
 
+class ArticlesDeleteView(LoginRequiredMixin, DeleteView):
+    model = Articles
+    template_name = 'userroom.html'
+    success_url = reverse_lazy('userroom')
+    success_msg = 'Запись удалена'
+    def post(self,request,*args,**kwargs):
+        messages.success(self.request, self.success_msg)
+        return super().post(request)
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.request.user != self.object.author:
+            return self.handle_no_permission()
+        success_url = self.get_success_url()
+        self.object.delete()
+        return HttpResponseRedirect(success_url)
+
 def index(request):
     context = {
 
