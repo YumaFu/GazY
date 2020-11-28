@@ -1,12 +1,12 @@
 {% extends 'index.html' %}
     
     {% block content %}
-    <h1 class="mt-4">Статья: {{get_article.name}}</h1>
+    <h1 class="mt-4">Статья: {{get_article.first_name}}</h1>
     <p><a href="/">Вернуться назад</a></p>
 
 
     <p>Дата создания:  {{get_article.create_date}}</p>
-    <p>Название:  {{get_article.name}}</p>
+    <p>Название:  {{get_article.first_name}}</p>
     <p>Текст: {{get_article.text}}</p>
     
     
@@ -51,6 +51,7 @@
         <form action="" id="add_form" method="post">
             {% csrf_token %}
                 {{form.as_p}}
+            {{form.author=}}
         </form>
 
 

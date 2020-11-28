@@ -7,12 +7,12 @@
     
     <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Добавить новую статью
+  Добавить новое резюме
 </button>
 
 
     {% if success %}
-    <p style="color:red">Запись добавлена</p>
+    <p style="color:red">Резюме добавлена</p>
     {% endif %}
     
     {% if messages %}
@@ -52,8 +52,15 @@
     <tr>
       <th scope="col">id</th>
       <th scope="col">Дата создания</th>
-      <th scope="col">Название</th>
-      <th scope="col">Редактирование</th>
+      <th scope="col">Фамилия</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">Почта</th>
+      <th scope="col">Описание</th>
+      <th scope="col">Научные интересов</th>
+      <th scope="col">Предыдущий опыт</th>
+      <th scope="col">Ключевые компетенции</th>
+      <th scope="col">Редактировать</th>
       <th scope="col">Удаление</th>
     </tr>
   </thead>
@@ -63,7 +70,14 @@
     <tr {% if i.id|slugify == request.GET.id %} style="background:red" {% endif %}>
       <th>{{i.id}}</th>
       <td>{{i.create_date|date:'d.m.Y'}} - {{i.author}}</td>
-      <td>{{i.name}}</td>
+      <td>{{i.last_name }}</td>
+        <td>{{i.first_name}}</td>
+        <td>{{i.phone}}</td>
+        <td>{{i.mail}}</td>
+        <td>{{i.text}}</td>
+        <td>{{i.textinteres}}</td>
+        <td>{{i.textwork}}</td>
+        <td>{{i.textkeys}}</td>
       <td>
           
           {% if request.user == i.author %}

@@ -125,7 +125,56 @@
               </div>
 
             </div>
+ {% for i in list_articles %}
+    <tr {% if i.id|slugify == request.GET.id %} style="background:red" {% endif %}>
+      <th>{{i.id}}</th>
+      <td>{{i.create_date|date:'d.m.Y'}} - {{i.author}}</td>
+      <td>{{i.last_name }}</td>
+        <td>{{i.first_name}}</td>
+        <td>{{i.phone}}</td>
+        <td>{{i.mail}}</td>
+        <td>{{i.text}}</td>
+        <td>{{i.textinteres}}</td>
+        <td>{{i.textwork}}</td>
+        <td>{{i.textkeys}}</td>
+      <td>
 
+          {% if request.user == i.author %}
+          <a href="{% url 'update_page' i.id %}">редактировать</a>
+          {% else %}
+
+          нет доступа
+          {% endif %}
+
+          </td>
+      <td>
+
+
+
+          {% if request.user == i.author %}
+          <form id="delete_form{{i.id}}" action="{% url 'delete_page' i.id %}" method="post">{% csrf_token %}</form>
+          <a href="javascript:void()" onclick="delete_question{{i.id}}()">удалить</a>
+          <script>
+              function delete_question{{i.id}}() {
+                  if (confirm("Вы уверены")) {
+                      document.getElementById('delete_form{{i.id}}').submit()
+                  }
+
+              }
+
+              </script>
+
+          {% else %}
+
+          нет доступа
+
+
+            {% endif %}
+
+
+          </td>
+    </tr>
+    {% endfor %}
             <div class="col-xs-12 col-sm-2">
               <ul class="list-group">
                 <li class="list-group-item">Last name</li>

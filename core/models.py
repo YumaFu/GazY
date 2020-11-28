@@ -7,11 +7,18 @@ from django.db.models import Q
 class Articles(models.Model):
     author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name='Владелец резюме', blank = True, null = True )
     create_date = models.DateTimeField(auto_now=True)
-    name = models.CharField(max_length=200, verbose_name='Название')
-    text = models.TextField(verbose_name='Текст')
+    name= models.CharField(max_length=200, verbose_name='user')
+    last_name = models.CharField(max_length=200, verbose_name='Фамилия', default="default_name")
+    first_name = models.CharField(max_length=200, verbose_name='Имя', default="some_value")
+    phone = models.TextField(max_length=12, null=False, blank=False, unique=True, default="8900000000")
+    mail = models.EmailField(max_length=254, default='@mail.ru')
+    text = models.TextField(verbose_name='Описание')
+    textinteres = models.TextField(verbose_name='Область научных интересов', blank=True)
+    textwork = models.TextField(verbose_name='Предыдущий опыт', blank=True)
+    textkeys = models.TextField(verbose_name='Ключевые компетенции', blank=True)
     
     def __str__(self):
-        return self.name
+        return self.first_name
     
     class Meta:
         verbose_name='Резюме'
