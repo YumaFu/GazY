@@ -1,19 +1,26 @@
 from django.shortcuts import render,redirect,HttpResponse
 
-from .models import Articles,Comments
+from .models import Articles, Comments, Question
 from django.views.generic import ListView, DetailView,CreateView, UpdateView,DeleteView
 from django.views.generic.edit import FormMixin
 from .forms import ArticleForm, AuthUserForm, RegisterUserForm,CommentForm
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
-from django.contrib.auth.views import LoginView,LogoutView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, request
 from django.db import models
-
+from .serializers import QuestionSerializer, AnswerSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import GenericAPIView
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework import generics, status, viewsets
 from django.template import Context, Template
+from .models import Question
+from .serializers import QuestionSerializer
 
 
 class HomeListView(ListView):
@@ -214,6 +221,38 @@ class ArticlesDeleteView(LoginRequiredMixin, DeleteView):
         success_url = self.get_success_url()
         self.object.delete()
         return HttpResponseRedirect(success_url)
+
+# queryset = Question.objects.all()
+class GetQuestion(viewsets.ModelViewSet):
+    queryset = Question.objects.filter()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = QuestionSerializer
+
+    def get(self, request, format=None):
+        questions = Question.objects.filter(visible=True, )
+        last_point = QuestionSerializer(questions, many=True)
+        return Response(last_point.data)
+
+
+
+class QuestionAnswer(GenericAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = AnswerSerializer
+
+    def post(self, request, format=None):
+        answer = AnswerSerializer(data=request.data, context=request)
+        if answer.is_valid(raise_exception=True):
+            answer.save()
+            return Response({'result': 'OK'})
+
+def godevtest(GetQuestion):
+    context = {
+        'title': GetQuestion.object.title,
+    }
+
+    templates = 'godevtest.html'
+
+    return render(request, templates, context)
 
 def index(request):
     context = {
