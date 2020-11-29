@@ -41,8 +41,7 @@ urlpatterns = [
     #ajax
     path('update_comment_status/<int:pk>/<slug:type>', views.update_comment_status, name='update_comment_status'),
     path('godev', views.GoDev, name='godev'),
-    path('godev/testi/', GetQuestion.as_view({'get': 'list'}), name='answer'),
-    path('godev/test', views.godevtest, name='godevtest'),
+    path('godev/test/', GetQuestion.as_view({'get': 'list'}), name='answer'),
     path('godev/answer/', QuestionAnswer.as_view(), name='answer'),
 
 

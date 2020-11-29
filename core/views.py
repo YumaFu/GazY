@@ -245,15 +245,6 @@ class QuestionAnswer(GenericAPIView):
             answer.save()
             return Response({'result': 'OK'})
 
-def godevtest(GetQuestion):
-    context = {
-        'title': GetQuestion.object.title,
-    }
-
-    templates = 'godevtest.html'
-
-    return render(request, templates, context)
-
 def index(request):
     context = {
 
